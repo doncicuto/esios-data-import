@@ -1,34 +1,8 @@
-import fetch from "node-fetch";
 import { DateTime } from "luxon";
-import { ElectricityPrice, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import { getDataFromESIOS } from "./getDataFromESIOS";
 
 const db = new PrismaClient();
-
-const getDataFromESIOS = async () => {
-  const res = await fetch("https://api.esios.ree.es/indicators/1001", {
-    method: "GET",
-    headers: {
-      Accept: "application/json; application/vnd.esios-api-v2+json",
-      "Content-Type": "application/json",
-      Host: "api.esios.ree.es",
-      Authorization: `Token token=${process.env.ESIOS_KEY}`,
-    },
-  });
-
-  const json: {
-    indicator: { values_updated_at: string; values: ElectricityPrice[] };
-  } = await res.json();
-
-  if (
-    json.indicator &&
-    json.indicator.values &&
-    Array.isArray(json.indicator.values)
-  ) {
-    return json.indicator.values;
-  }
-
-  return null;
-};
 
 async function main() {
   const todayUTC = DateTime.local().startOf("day").toUTC();
