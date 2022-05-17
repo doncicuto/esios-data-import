@@ -1,7 +1,7 @@
 {
-  "name": "esios_data_import",
+  "name": "pvpc-to-postgres",
   "version": "1.0.0",
-  "description": "Import power pricing from ESIOS rest api",
+  "description": "Import PVPC electricity prices from ESIOS api and save them in postgres",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
@@ -13,7 +13,8 @@
     "ESIOS",
     "Electricity",
     "Price",
-    "Spain"
+    "Spain",
+    "PVPC"
   ],
   "author": "Miguel Cabrerizo",
   "license": "MIT",
