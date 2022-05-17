@@ -15,4 +15,4 @@ You can run this script using `npm start` or you can run it using Docker:
 docker run --env DATABASE_URL="postgresql://user:password@your_db_server_or_hostname:5432/your_db_name?schema=public" --env ESIOS_KEY="your_esios_key" get-esios
 ```
 
-Each time you run execute this command, records older than today are deleted.
+Each time you execute this command, records older than today will be deleted from the database.
