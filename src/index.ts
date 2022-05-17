@@ -36,7 +36,7 @@ async function main() {
       startUTC: todaysStartUTC,
       endUTC: todaysEndUTC,
     });
-    if (esiosData) {
+    if (esiosData && esiosData.length > 0) {
       const esiosDbData = await db.electricityPrice.findFirst({
         where: { tz_time: esiosData[0].tz_time },
       });
@@ -87,13 +87,15 @@ async function main() {
   // Get data if we don't have today's data or if local time is greater than 20h and we don't have tomorrow's data
   if (nowLocalTime > today20h && !tomorrowData) {
     console.log(` ${DateTime.now().toISO()} - get tomorrow's ESIOS data`);
-    console.log("-----------------------------------------");
+    console.log(
+      "----------------------------------------------------------------------------------"
+    );
 
     const esiosData = await getDataFromESIOS({
       startUTC: tomorrowsStartUTC,
       endUTC: tomorrowsEndUTC,
     });
-    if (esiosData) {
+    if (esiosData && esiosData.length > 0) {
       const esiosDbData = await db.electricityPrice.findFirst({
         where: { tz_time: esiosData[0].tz_time },
       });
