@@ -12,7 +12,7 @@ Two env variables are required, one for Prisma for database connection, the othe
 You can run this script using `npm start` or you can run it using Docker:
 
 ```(bash)
-docker run --env DATABASE_URL="postgresql://user:password@your_db_server_or_hostname:5432/your_db_name?schema=public" --env ESIOS_KEY="your_esios_key" get-esios
+docker run --env DATABASE_URL="postgresql://user:password@your_db_server_or_hostname:5432/your_db_name?schema=public" --env ESIOS_KEY="your_esios_key" sologitops/pvpc-to-postgres
 ```
 
 Each time you execute this command, records older than today will be deleted from the database.

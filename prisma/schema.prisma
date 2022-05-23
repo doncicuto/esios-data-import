@@ -20,3 +20,12 @@ model ElectricityPrice {
 
   @@id([datetime_utc, geo_id])
 }
+
+model Client {
+  chatId    Int
+  command   String
+  updatedAt DateTime @default(now())
+  used      Int      @default(0)
+
+  @@id([chatId, command])
+}

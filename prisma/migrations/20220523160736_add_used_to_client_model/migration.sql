@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN     "used" INTEGER NOT NULL DEFAULT 0;
