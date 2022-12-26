@@ -17,7 +17,7 @@ export const getDataFromESIOS = async ({
           Accept: "application/json; application/vnd.esios-api-v2+json",
           "Content-Type": "application/json",
           Host: "api.esios.ree.es",
-          Authorization: `Token token=${process.env.ESIOS_KEY}`,
+          "x-api-key": `${process.env.ESIOS_KEY}`,
         },
       }
     );
